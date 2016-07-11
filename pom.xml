@@ -4,9 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.xzc</groupId>
+	<groupId>com.github.xzchaoo</groupId>
 	<artifactId>utils</artifactId>
 	<version>1.0-SNAPSHOT</version>
+
+	<distributionManagement>
+		<repository>
+			<id>myrepo</id>
+			<url>http://222.35.17.177:8081/nexus/content/repositories/myrepo/</url>
+		</repository>
+		<snapshotRepository>
+			<id>myrepo-snapshot</id>
+			<url>http://222.35.17.177:8081/nexus/content/repositories/myrepo-snapshot/</url>
+		</snapshotRepository>
+	</distributionManagement>
 
 
 </project>

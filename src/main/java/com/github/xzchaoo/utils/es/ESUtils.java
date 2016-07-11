@@ -1,12 +1,10 @@
-package org.xzc.utils.es;
+package com.github.xzchaoo.utils.es;
 
 import java.util.Iterator;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
-import static javafx.scene.input.KeyCode.T;
 
 /**
  * Created by Administrator on 2016/7/10.

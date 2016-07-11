@@ -1,4 +1,4 @@
-package org.xzc.utils.number;
+package com.github.xzchaoo.utils.number;
 
 /**
  * Created by Administrator on 2016/7/10.
