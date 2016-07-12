@@ -4,6 +4,14 @@ package com.github.xzchaoo.utils;
  * Created by xzchaoo on 2016/6/7 0007.
  */
 public class SleepUtils {
+	public static void sleepQuietly(long mills) {
+		try {
+			Thread.sleep(mills);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public static void sleep(String tag, long millis) {
 		sleep(tag, millis, true);
 	}
