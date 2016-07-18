@@ -9,7 +9,19 @@ public class Assert {
 		notNull(obj, "can not be null.");
 	}
 
+	public static void notEmpty(String str) {
+		notEmpty(str, "str can not be empty");
+	}
+
+	public static void notEmpty(String str, String message) {
+		if (str == null || str.length() == 0) {
+			throw new IllegalArgumentException(message);
+		}
+	}
+
 	public static void notNull(Object obj, String desc) {
-		if (obj == null) throw new NullPointerException(desc);
+		if (obj == null) {
+			throw new NullPointerException(desc);
+		}
 	}
 }
