@@ -5,6 +5,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by Administrator on 2016/7/10.
@@ -34,6 +35,33 @@ public class ESUtils {
 						try {
 							if (callback.onException(t, e)) {
 								lastT = t;
+							}
+						} catch (Exception e2) {
+							e2.printStackTrace();
+						}
+					}
+				}
+			}
+		});
+	}
+
+	public static <T> void runInES2_1(final int beg, final int end, int threads, final RunInES2Callback callback) throws InterruptedException {
+		final AtomicInteger index = new AtomicInteger(beg);
+		runInES1(threads, new RunInES1Callback() {
+			public void run(int index0) throws Exception {
+				Integer last = null;
+				while (true) {
+					int i = last != null ? last : index.getAndIncrement();
+					last = null;
+					if (i >= end) {
+						return;
+					}
+					try {
+						callback.run(i);
+					} catch (Exception e) {
+						try {
+							if (callback.onException(i, e)) {
+								last = i;
 							}
 						} catch (Exception e2) {
 							e2.printStackTrace();
