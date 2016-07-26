@@ -5,6 +5,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -45,22 +46,23 @@ public class ESUtils {
 		});
 	}
 
-	public static <T> void runInES2_1(final int beg, final int end, int threads, final RunInES2Callback callback) throws InterruptedException {
+	public static <T> void runInES4(final int beg, final int end, int threads, final RunInES4Callback callback) throws InterruptedException {
 		final AtomicInteger index = new AtomicInteger(beg);
+		final AtomicBoolean stop = new AtomicBoolean(false);
 		runInES1(threads, new RunInES1Callback() {
 			public void run(int index0) throws Exception {
 				Integer last = null;
-				while (true) {
+				while (!stop.get()) {
 					int i = last != null ? last : index.getAndIncrement();
 					last = null;
 					if (i >= end) {
 						return;
 					}
 					try {
-						callback.run(i);
+						callback.run(i, stop);
 					} catch (Exception e) {
 						try {
-							if (callback.onException(i, e)) {
+							if (callback.onException(i, stop, e)) {
 								last = i;
 							}
 						} catch (Exception e2) {
