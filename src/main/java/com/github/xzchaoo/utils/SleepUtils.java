@@ -8,7 +8,6 @@ public class SleepUtils {
 		try {
 			Thread.sleep(mills);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 	}
 

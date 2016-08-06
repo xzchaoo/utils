@@ -36,8 +36,11 @@ public class ESUtils {
 						try {
 							if (callback.onException(t, e)) {
 								lastT = t;
+							} else {
+								lastT = null;
 							}
 						} catch (Exception e2) {
+							lastT = null;
 							e2.printStackTrace();
 						}
 					}
@@ -95,6 +98,10 @@ public class ESUtils {
 	}
 
 	public static void runInES1(int threads, final RunInES1Callback callback) throws InterruptedException {
+		es1(threads, callback).untilFinished();
+	}
+
+	public static ESOperator es1(int threads, final RunInES1Callback callback) {
 		ExecutorService es = Executors.newFixedThreadPool(threads);
 		for (int i = 0; i < threads; ++i) {
 			final int index = i;
@@ -105,7 +112,6 @@ public class ESUtils {
 				}
 			});
 		}
-		es.shutdown();
-		es.awaitTermination(1, TimeUnit.DAYS);
+		return new ESOperator(es);
 	}
 }
