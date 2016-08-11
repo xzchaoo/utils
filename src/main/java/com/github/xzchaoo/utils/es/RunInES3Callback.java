@@ -1,7 +1,5 @@
 package com.github.xzchaoo.utils.es;
 
-import static javafx.scene.input.KeyCode.T;
-
 /**
  * Created by Administrator on 2016/7/10.
  */
