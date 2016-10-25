@@ -5,32 +5,33 @@ package com.github.xzchaoo.utils;
  */
 public class IPUtils {
 	public static int ipToInt(String ip) {
+		long ret = ipToLong(ip);
+		return (int) ret & 0X7FFFFFFF | ((int) ret & 0X80000000);
+	}
+
+	public static String intToIP(int ipAsInt) {
+		return longToIP((long) ipAsInt & 0X7FFFFFFF | (ipAsInt & 0X80000000));
+	}
+
+	public static long ipToLong(String ip) {
 		String[] ss = ip.split("\\.");
-		int ret = 0;
+		long ret = 0;
 		for (int i = 0; i < 4; ++i) {
 			int b = Integer.parseInt(ss[i]);
-			if (b > 127) b -= 256;
-			ret = (ret << 8) | (b & 0xff);
+			ret = (ret << 8) | (b & 0XFF);
 		}
 		return ret;
 	}
 
-	public static String intToIP(int ipAsInt) {
+	public static String longToIP(long ipAsLong) {
 		StringBuilder sb = new StringBuilder();
-		sb.append((256 + ((ipAsInt >> 24) & 0xff)) & 0xff);
+		sb.append((ipAsLong >> 24) & 0XFF);
 		sb.append('.');
-		sb.append((256 + ((ipAsInt >> 16) & 0xff)) & 0xff);
+		sb.append((ipAsLong >> 16) & 0XFF);
 		sb.append('.');
-		sb.append((256 + ((ipAsInt >> 8) & 0xff)) & 0xff);
+		sb.append((ipAsLong >> 8) & 0XFF);
 		sb.append('.');
-		sb.append((256 + ((ipAsInt >> 0) & 0xff)) & 0xff);
+		sb.append((ipAsLong >> 0) & 0XFF);
 		return sb.toString();
-	}
-
-
-	public static void main(String[] args) {
-		for (int i = -1062731519; i < -1062731519 + 65536; ++i) {
-			System.out.println(intToIP(i));
-		}
 	}
 }

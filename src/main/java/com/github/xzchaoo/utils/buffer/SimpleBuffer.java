@@ -13,8 +13,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 public abstract class SimpleBuffer<T> {
 	private final List<T> buffer;
 	private final int mMaxSize;
-	private final AtomicInteger count = new AtomicInteger(0);
 	private final int printInterval;
+	private int count=0;
 
 	public SimpleBuffer(int size, int printInterval) {
 		buffer = new ArrayList<T>(size);
@@ -23,7 +23,7 @@ public abstract class SimpleBuffer<T> {
 	}
 
 	public synchronized void add(T t) {
-		int c = count.incrementAndGet();
+		int c = ++count;
 		if (c % printInterval == 0) {
 			onInterval(c);
 		}
