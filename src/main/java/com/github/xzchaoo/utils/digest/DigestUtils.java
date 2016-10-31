@@ -5,7 +5,9 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * Created by xiangfeng.xzc on 2016/7/19.
+ * @deprecated use "Commons Codec" instead
  */
+@Deprecated
 public class DigestUtils {
 	private static MessageDigest getDigest(String algorithm) {
 		try {
