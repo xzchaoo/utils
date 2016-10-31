@@ -7,7 +7,7 @@ package com.github.xzchaoo.utils;
  */
 public class IPUtils {
 	/**
-	 * ip 转 int 由于int是32位有符号的 所以当ip >= 128.0.0.1 时候 int就变成负数了
+	 * ip 转 int 由于int是32位有符号的 所以当ip 大于等于 128.0.0.1 时候 int就变成负数了
 	 *
 	 * @param ip
 	 * @return
