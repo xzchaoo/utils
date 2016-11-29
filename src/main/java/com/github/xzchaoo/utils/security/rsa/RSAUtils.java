@@ -3,6 +3,8 @@ package com.github.xzchaoo.utils.security.rsa;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -19,6 +21,11 @@ import javax.crypto.NoSuchPaddingException;
  * Created by Administrator on 2016/10/31.
  */
 public class RSAUtils {
+
+	public static KeyPair generateDefaultPublicKey() throws NoSuchAlgorithmException {
+		KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
+		return kpg.generateKeyPair();
+	}
 
 	public static PublicKey getPublicKey(byte[] encodedKey) throws InvalidKeySpecException, NoSuchAlgorithmException {
 		return KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(encodedKey));
