@@ -1,11 +1,11 @@
 package com.com.github.xzchaoo.utils.buffer;
 
-import com.github.xzchaoo.utils.buffer.BufferFlusher;
-import com.github.xzchaoo.utils.buffer.SyncBuffer;
-import com.github.xzchaoo.utils.es.n.ESBuilder;
-import com.github.xzchaoo.utils.es.n.ESCallback;
-import com.github.xzchaoo.utils.es.n.ESContext;
-import com.github.xzchaoo.utils.es.n.TaskContext;
+import com.xzchaoo.utils.buffer.BufferFlusher;
+import com.xzchaoo.utils.buffer.SyncBuffer;
+import com.xzchaoo.utils.es.n.ESBuilder;
+import com.xzchaoo.utils.es.n.ESCallback;
+import com.xzchaoo.utils.es.n.ESContext;
+import com.xzchaoo.utils.es.n.TaskContext;
 
 import org.junit.Test;
 
