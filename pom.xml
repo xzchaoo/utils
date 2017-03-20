@@ -6,31 +6,28 @@
 
 	<groupId>com.xzchaoo</groupId>
 	<artifactId>utils</artifactId>
-	<version>1.1.0</version>
+	<packaging>pom</packaging>
+	<version>2.0.0-SNAPSHOT</version>
+
+	<modules>
+		<module>utils-thread</module>
+		<module>utils-concurrent</module>
+		<module>utils-core</module>
+		<module>utils-buffer</module>
+		<module>utils-net</module>
+		<module>utils-security</module>
+		<module>utils-commandline</module>
+	</modules>
 
 	<parent>
 		<groupId>com.xzchaoo</groupId>
 		<artifactId>parent</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.5</version>
 	</parent>
 
 	<name>utils</name>
 	<description>xzchaoo's utils</description>
 	<url>http://github.com/xzchaoo/utils</url>
-
-	<licenses>
-		<license>
-			<name>The Apache License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-		</license>
-	</licenses>
-
-	<developers>
-		<developer>
-			<name>xzchaoo</name>
-			<email>70862045@qq.com</email>
-		</developer>
-	</developers>
 
 	<scm>
 		<connection>scm:git:git://github.com/xzchaoo/utils.git</connection>
@@ -38,20 +35,52 @@
 		<url>http://github.com/xzchaoo/utils</url>
 	</scm>
 
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
+	<dependencyManagement>
+		<dependencies>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>utils-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>utils-thread</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>utils-concurrent</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>utils-buffer</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>utils-security</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>utils-net</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>utils-commandline</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
 
 </project>
